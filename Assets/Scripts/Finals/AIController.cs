@@ -25,7 +25,7 @@ public class AIController : MonoBehaviour, IHealthHandler {
     public Team Team;
     public LayerMask EntityMask;
     public NavMeshAgent Agent;
-    public List<GameObject> AIModels;
+    public List<AIModel> AIModels;
     [HideInInspector]
     public Animator Anim;
     private Collider _col;
@@ -78,18 +78,10 @@ public class AIController : MonoBehaviour, IHealthHandler {
     private void Init() {
         _col = GetComponent<Collider>();
 
-        foreach (var model in AIModels) {
-            model.SetActive(false);
+        foreach (var m in AIModels) {
+            m.Model.SetActive(false);
         }
         
-        Action<AI_Types> activateAiModel = (AI_Types aiType) => {
-            AIModels[_aiTypes[aiType]].SetActive(true);
-            Anim = AIModels[_aiTypes[aiType]].GetComponent<Animator>();
-        };
-        activateAiModel(Type);
-
-        PatrolDestination = this.transform.forward * Offset;
-
         StatsData sd = GameManager.Instance.AssignValue(Type);
         HP = sd.HP;
         DetectRange = sd.DetectRange;
@@ -98,6 +90,24 @@ public class AIController : MonoBehaviour, IHealthHandler {
         Damage = sd.Damage;
         BeforeAttackTime = sd.PrepareToAttackTime;
         AttackDuration += BeforeAttackTime;
+        
+        Action<AI_Types> activateAiModel = (AI_Types aiType) => {
+            var aiModel = AIModels[_aiTypes[aiType]];
+            aiModel.Model.SetActive(true);
+            Anim = aiModel.Model.GetComponent<Animator>();
+            
+            switch(Team) {
+                case Team.TeamA:
+                    aiModel.Renderer.material = sd.RedTeamMat;
+                    break;
+                case Team.TeamB:
+                    aiModel.Renderer.material = sd.BlueTeamMat;
+                    break;
+            }
+        };
+        activateAiModel(Type);
+
+        PatrolDestination = this.transform.forward * Offset;
 
         UpdateAnimClip();
         
@@ -221,4 +231,10 @@ public class AIController : MonoBehaviour, IHealthHandler {
         Gizmos.DrawWireSphere(this.transform.position + transform.up * UpOffset + transform.forward * ForwardOffset, MeleeAttackRadius);
     }
 }
+}
+
+[System.Serializable]
+public class AIModel {
+    public GameObject Model;
+    public Renderer Renderer;
 }

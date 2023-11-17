@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour {
     public void Init(AIController aiCtrl, float damage, float duration = 1f) {
         if (_isFired) return;
         _isFired = true;
+        this.transform.LookAt(aiCtrl.transform);
         StartCoroutine(Fire_Co(aiCtrl, damage, duration));
     }
 

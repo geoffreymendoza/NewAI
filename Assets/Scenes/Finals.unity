@@ -10905,6 +10905,8 @@ MonoBehaviour:
     PrepareToAttackTime: 1
     AttackLogicTime: 1
     DetectRange: 25
+    RedTeamMat: {fileID: 2100000, guid: f605a1a5d561ec94a9fa92ea07deda7d, type: 2}
+    BlueTeamMat: {fileID: 2100000, guid: f089e79831fb56d4886ff3b396307b1a, type: 2}
   - Type: 1
     HP: 20
     Damage: 1
@@ -10912,6 +10914,8 @@ MonoBehaviour:
     PrepareToAttackTime: 0
     AttackLogicTime: 0.14
     DetectRange: 15
+    RedTeamMat: {fileID: 2100000, guid: b5c022b337d410548bbff7ff8a19d86e, type: 2}
+    BlueTeamMat: {fileID: 2100000, guid: 237c49a241f4eb24ebe2d938bb92c0e1, type: 2}
   - Type: 2
     HP: 6
     Damage: 3
@@ -10919,6 +10923,8 @@ MonoBehaviour:
     PrepareToAttackTime: 0
     AttackLogicTime: 0.6
     DetectRange: 25
+    RedTeamMat: {fileID: 2100000, guid: 5c28afe49dc293342a922622295c110b, type: 2}
+    BlueTeamMat: {fileID: 2100000, guid: 47e10a3b62a0e2f4fbb815e476f6cbc3, type: 2}
   - Type: 3
     HP: 7
     Damage: 4
@@ -10926,6 +10932,8 @@ MonoBehaviour:
     PrepareToAttackTime: 0
     AttackLogicTime: 0.07
     DetectRange: 25
+    RedTeamMat: {fileID: 2100000, guid: 69164fa1b19add6409264927c59f2d9e, type: 2}
+    BlueTeamMat: {fileID: 2100000, guid: cb2302062c0567b4e8000e57f1675963, type: 2}
   mageHealth: 6
   archerHealth: 8
   warriorHealth: 12

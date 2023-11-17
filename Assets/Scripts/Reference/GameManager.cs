@@ -65,11 +65,11 @@ public class GameManager : MonoBehaviour {
 
         if (teamA.Count > 0 && teamB.Count <= 0) {
             Debug.Log("Team B won");
-            NotificationTmp.text = "Left Side Won!";
+            NotificationTmp.text = "Red Won!";
         }
         else if (teamB.Count > 0 && teamA.Count <= 0) {
             Debug.Log("Team A won");
-            NotificationTmp.text = "Right Side Won!";
+            NotificationTmp.text = "Blue Won!";
         }
     }
     
@@ -78,10 +78,14 @@ public class GameManager : MonoBehaviour {
 [System.Serializable]
 public class StatsData {
     public Finals.AI_Types Type;
+    [Header("Stats")]
     public float HP;
     public float Damage;
     public float AttackRange;
     public float PrepareToAttackTime;
     public float AttackLogicTime;
     public float DetectRange;
+    [Header("Reference")]
+    public Material RedTeamMat;
+    public Material BlueTeamMat;
 }
